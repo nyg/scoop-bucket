@@ -1,0 +1,70 @@
+name: Update crypto-tools manifest
+
+# Triggered by nyg/crypto-tools' release.yml via repository_dispatch after a
+# release. Bumps the version, download URL, and SHA256 hash in the Scoop
+# manifest so `scoop update crypto-tools` picks up the new release.
+on:
+  repository_dispatch:
+    types: [update-crypto-tools]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Release version (without leading "v"), e.g. 1.2.3
+        required: true
+      zip_sha256:
+        description: SHA256 of the released CryptoTools.zip
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  update-manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out bucket
+        uses: actions/checkout@v4
+
+      - name: Update manifest
+        env:
+          VERSION: ${{ github.event.client_payload.version || inputs.version }}
+          ZIP_SHA256: ${{ github.event.client_payload.zip_sha256 || inputs.zip_sha256 }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${VERSION:-}" ] || [ -z "${ZIP_SHA256:-}" ]; then
+            echo "::error::version and zip_sha256 are required" >&2
+            exit 1
+          fi
+
+          manifest=bucket/crypto-tools.json
+          tmp=$(mktemp)
+
+          jq \
+            --arg version "$VERSION" \
+            --arg hash "$ZIP_SHA256" \
+            '
+              .version = $version
+              | .architecture."64bit".url =
+                  "https://github.com/nyg/crypto-tools/releases/download/v\($version)/CryptoTools.zip"
+              | .architecture."64bit".hash = $hash
+            ' "$manifest" > "$tmp"
+
+          mv "$tmp" "$manifest"
+          echo "Updated $manifest to version $VERSION"
+          cat "$manifest"
+
+      - name: Commit and push
+        env:
+          VERSION: ${{ github.event.client_payload.version || inputs.version }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add bucket/crypto-tools.json
+          if git diff --cached --quiet; then
+            echo "No manifest changes; nothing to commit."
+            exit 0
+          fi
+          git commit -m "crypto-tools: update to $VERSION"
+          git push

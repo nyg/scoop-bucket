@@ -1,0 +1,36 @@
+{
+    "version": "0.0.0",
+    "description": "Miscellaneous cryptocurrency-related tools.",
+    "homepage": "https://github.com/nyg/crypto-tools",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/nyg/crypto-tools/releases/download/v0.0.0/CryptoTools.zip",
+            "hash": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+    },
+    "installer": {
+        "script": [
+            "$setup = \"$dir\\CryptoTools-Setup.exe\"",
+            "if (!(Test-Path $setup)) { throw \"CryptoTools-Setup.exe not found in $dir\" }",
+            "Write-Host 'Running CryptoTools-Setup.exe (installs per-user to %LOCALAPPDATA%, no admin required)...'",
+            "Start-Process -FilePath $setup -Wait"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "$uninstall = \"$env:LOCALAPPDATA\\CryptoTools\\Uninstall CryptoTools.exe\"",
+            "if (Test-Path $uninstall) { Start-Process -FilePath $uninstall -Wait } else { Write-Host 'CryptoTools uninstaller not found; remove %LOCALAPPDATA%\\CryptoTools manually if needed.' }"
+        ]
+    },
+    "checkver": {
+        "github": "https://github.com/nyg/crypto-tools"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/nyg/crypto-tools/releases/download/v$version/CryptoTools.zip"
+            }
+        }
+    }
+}
