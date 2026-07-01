@@ -19,15 +19,11 @@ Don't have Scoop yet? Install it first (no admin required):
 irm get.scoop.sh | iex
 ```
 
-Scoop downloads and extracts `CryptoTools.zip` itself, which strips the
-"mark of the web", so running the (unsigned) `CryptoTools-Setup.exe` never
-triggers Windows SmartScreen — this works for standard, non-admin users too.
-The app installs per-user to `%LOCALAPPDATA%`.
+Scoop downloads and extracts `CryptoTools-Scoop.zip`, a flat portable package
+whose root contains `bin\launcher.exe` and the Electrobun runtime files.
 
 ### Updates
 
-`bucket/crypto-tools.json` is kept in sync automatically: nyg/crypto-tools'
-release workflow sends a `repository_dispatch` (`update-crypto-tools`) event
-with the new `version` and `zip_sha256`, and
-[`.github/workflows/update-crypto-tools.yml`](.github/workflows/update-crypto-tools.yml)
-bumps the manifest's `version`, download URL, and `hash`.
+`bucket/crypto-tools.json` is kept in sync automatically by
+`nyg/crypto-tools`' release workflow, which updates and pushes the manifest
+directly after publishing each release asset.
