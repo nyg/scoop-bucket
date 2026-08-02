@@ -1,12 +1,12 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A collection of cryptocurrency tools for Kraken and Binance exchanges.",
   "homepage": "https://github.com/nyg/crypto-tools",
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://github.com/nyg/crypto-tools/releases/download/v0.1.0/CryptoTools-Scoop.zip",
-      "hash": "sha256:1e45e2c475c24930b068e3409669ec61e70477c5ed52e11bbd6b39d63f0e40ce"
+      "url": "https://github.com/nyg/crypto-tools/releases/download/v0.1.1/CryptoTools-Scoop.zip",
+      "hash": "sha256:13a2663fe1ba32205f2f519ed6e5de17d6c50352904c4fe5f54b543adfac18ae"
     }
   },
   "bin": "bin\\launcher.exe",
