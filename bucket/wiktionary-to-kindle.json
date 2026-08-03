@@ -1,12 +1,12 @@
 {
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Converts Wiktionary data into Kindle-compatible MOBI dictionaries.",
   "homepage": "https://github.com/nyg/wiktionary-to-kindle",
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://github.com/nyg/wiktionary-to-kindle/releases/download/v2.0.1/WiktionaryToKindle-Scoop.zip",
-      "hash": "sha256:1b455e34c96f009d8fb5da28cc549bfa93d00261892cbc9fe3d8b278104d1d22"
+      "url": "https://github.com/nyg/wiktionary-to-kindle/releases/download/v2.0.2/wiktionary-to-kindle-2.0.2-windows-x64-scoop.zip",
+      "hash": "sha256:930409926bea97af192307d6f2152cf798b275fcbed400f29ed4c962634140d5"
     }
   },
   "bin": [
