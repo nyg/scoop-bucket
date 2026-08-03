@@ -37,9 +37,12 @@ this bucket.
 
 The Electrobun apps (`crypto-tools`, `qoqa-compta`) launch through
 `bin\launcher.exe` next to the runtime files; `wiktionary-to-kindle` ships
-`Wiktionary to Kindle.exe` at the archive root and also exposes a
-`wiktionary-to-kindle` command on the Scoop shim path. All three register a
-Start menu shortcut under the names above.
+`Wiktionary to Kindle.exe` at the archive root. Every manifest aliases its `bin`
+entry to the app's own name, so each one gets a `crypto-tools`, `qoqa-compta`,
+or `wiktionary-to-kindle` shim on the Scoop path — the alias matters because the
+Electrobun entry point is always called `launcher.exe`, and without it those two
+apps would collide on a single `launcher` shim. All three also register a Start
+menu shortcut under the names above.
 
 macOS builds of the same apps are packaged in
 [nyg/homebrew-tap](https://github.com/nyg/homebrew-tap).

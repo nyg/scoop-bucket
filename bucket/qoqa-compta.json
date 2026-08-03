@@ -9,7 +9,12 @@
       "hash": "sha256:f76a1ec9a5ef69cbe1ced9bc67fa920490519efb806a6780e61b08b76e61f9a3"
     }
   },
-  "bin": "bin\\launcher.exe",
+  "bin": [
+    [
+      "bin\\launcher.exe",
+      "qoqa-compta"
+    ]
+  ],
   "shortcuts": [
     [
       "bin\\launcher.exe",
