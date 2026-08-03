@@ -17,11 +17,11 @@ irm get.scoop.sh | iex
 
 ## Apps
 
-| App | Description |
-| --- | --- |
-| [crypto-tools](https://github.com/nyg/crypto-tools) | A collection of cryptocurrency tools for Kraken and Binance exchanges. |
-| [qoqa-compta](https://github.com/nyg/qoqa-compta) | Desktop spending dashboard for QoQa.ch — syncs your orders and PDF invoices to a local database and displays spending charts, stats, and a searchable orders table. |
-| [wiktionary-to-kindle](https://github.com/nyg/wiktionary-to-kindle) | Converts Wiktionary data into Kindle-compatible MOBI dictionaries. |
+| App | Start menu name | Description |
+| --- | --- | --- |
+| [crypto-tools](https://github.com/nyg/crypto-tools) | Crypto Tools | A collection of cryptocurrency tools for Kraken and Binance exchanges. |
+| [qoqa-compta](https://github.com/nyg/qoqa-compta) | QoQa Compta | Desktop spending dashboard for QoQa.ch — syncs your orders and PDF invoices to a local database and displays spending charts, stats, and a searchable orders table. |
+| [wiktionary-to-kindle](https://github.com/nyg/wiktionary-to-kindle) | Wiktionary to Kindle | Converts Wiktionary data into Kindle-compatible MOBI dictionaries. |
 
 ```powershell
 scoop install crypto-tools
@@ -29,11 +29,20 @@ scoop install qoqa-compta
 scoop install wiktionary-to-kindle
 ```
 
-Each manifest points at a flat portable `*-Scoop.zip` release asset that Scoop
-downloads and extracts. The Electrobun apps (`crypto-tools`, `qoqa-compta`)
-expose `bin\launcher.exe` next to the runtime files;
-`wiktionary-to-kindle` ships its executable at the archive root. All three
-register a Start menu shortcut.
+Each manifest points at the flat portable
+`<app>-<version>-windows-x64-scoop.zip` release asset, which Scoop downloads and
+extracts — no installer runs. The `<app>-<version>-windows-x64-setup.zip` assets
+published alongside them are the standalone installer builds and are not used by
+this bucket.
+
+The Electrobun apps (`crypto-tools`, `qoqa-compta`) launch through
+`bin\launcher.exe` next to the runtime files; `wiktionary-to-kindle` ships
+`Wiktionary to Kindle.exe` at the archive root and also exposes a
+`wiktionary-to-kindle` command on the Scoop shim path. All three register a
+Start menu shortcut under the names above.
+
+macOS builds of the same apps are packaged in
+[nyg/homebrew-tap](https://github.com/nyg/homebrew-tap).
 
 ## Updates
 
