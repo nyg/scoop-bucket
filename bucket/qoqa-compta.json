@@ -1,12 +1,12 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Desktop spending dashboard for QoQa.ch — syncs your orders and PDF invoices to a local database and displays spending charts, stats, and a searchable orders table.",
   "homepage": "https://github.com/nyg/qoqa-compta",
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://github.com/nyg/qoqa-compta/releases/download/v0.1.0/QoQaCompta-Scoop.zip",
-      "hash": "sha256:c45cc0c6f7980a9039cf93c976ac7bae1202d6a39ea3ce64ee05e321837127ba"
+      "url": "https://github.com/nyg/qoqa-compta/releases/download/v0.1.1/qoqa-compta-0.1.1-windows-x64-scoop.zip",
+      "hash": "sha256:f76a1ec9a5ef69cbe1ced9bc67fa920490519efb806a6780e61b08b76e61f9a3"
     }
   },
   "bin": "bin\\launcher.exe",
