@@ -9,7 +9,12 @@
       "hash": "sha256:49e889156fdac898f6170e6b871f3dbf7f2138b6b3b19c99821eccb18eae3412"
     }
   },
-  "bin": "bin\\launcher.exe",
+  "bin": [
+    [
+      "bin\\launcher.exe",
+      "crypto-tools"
+    ]
+  ],
   "shortcuts": [
     [
       "bin\\launcher.exe",
